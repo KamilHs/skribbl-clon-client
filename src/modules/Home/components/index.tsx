@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 import { RootState } from "../../../redux/store";
-import lobbyActions from "../../../redux/actions/lobby";
+import { lobbyActions } from "../../../redux/actions";
 
 import "./index.css";
 
