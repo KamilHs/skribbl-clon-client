@@ -1,10 +1,10 @@
-import { CREATE_ROOM, JOIN_ROOM, socketActionTypes } from "../types";
+import { CREATE_ROOM, JOIN_ROOM, SocketActionTypes } from "../types";
 
 const actions = {
-    createRoom: (): socketActionTypes => ({
+    createRoom: (): SocketActionTypes => ({
         type: CREATE_ROOM,
     }),
-    joinRoom: (id: string): socketActionTypes => ({
+    joinRoom: (id: string): SocketActionTypes => ({
         type: JOIN_ROOM,
         payload: id,
     }),

@@ -33,7 +33,7 @@ interface IJoinRoom {
     payload: string;
 }
 
-export type socketActionTypes = ICreateRoom | IJoinRoom;
+export type SocketActionTypes = ICreateRoom | IJoinRoom;
 export type LobbyActionTypes = ISetIsValidId | ISetIdFetchStatus;
 
 export interface ILobbyState {
