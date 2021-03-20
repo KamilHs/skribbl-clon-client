@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+
 import ReactDOM from "react-dom";
-import "./index.css";
+
 import App from "./App";
+
+import "./index.css";
 
 ReactDOM.render(
   <React.Suspense fallback="loading">
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+  <App/>
     </React.StrictMode>
   </React.Suspense>,
   document.getElementById("root")
