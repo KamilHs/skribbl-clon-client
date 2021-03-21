@@ -5,9 +5,12 @@ const actions = {
         type: CREATE_ROOM,
         payload: nickname,
     }),
-    joinRoom: (id: string): SocketActionTypes => ({
+    joinRoom: (id: string, nickname: string): SocketActionTypes => ({
         type: JOIN_ROOM,
-        payload: id,
+        payload: {
+            id,
+            nickname,
+        },
     }),
 };
 

@@ -15,6 +15,7 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatch = {
     fetchIsValidId: homeActions.fetchIsValidId,
     createRoom: socketActions.createRoom,
+    joinRoom: socketActions.joinRoom,
 };
 
 const connector = connect(mapStateToProps, mapDispatch);
@@ -33,6 +34,7 @@ const Home: React.FC<PropsTypes> = ({
     createError,
     fetchIsValidId,
     createRoom,
+    joinRoom,
 }) => {
     const [nickname, setNickname] = React.useState<string>("");
     const [error, setError] = React.useState<string>("");
@@ -53,11 +55,12 @@ const Home: React.FC<PropsTypes> = ({
         }
         if (isValidId) {
             // Join game
+            joinRoom(id || "", nickname.trim());
         } else {
             // Create room
             createRoom(nickname.trim());
         }
-    }, [nickname, isValidId, createRoom]);
+    }, [nickname, isValidId, id, createRoom, joinRoom]);
 
     React.useEffect(() => {
         if (!id || !fetchIsValidId) return;
