@@ -6,10 +6,14 @@ interface IProps {
 }
 
 const Player: React.FC<IProps> = ({ player: { nickname, role, isMe } }) => (
-    <div className="player__list-item">
-        <p>{nickname}</p>
-        {role === PlayerType.admin && <p>Admin</p>}
-        {isMe && <p>You</p>}
+    <div className="players__list-item">
+        <div className="player">
+            <div className="player__left">
+                <p className="player__nickname">{nickname}</p>
+                {isMe && <p className="player__self">You</p>}
+            </div>
+            {role === PlayerType.admin && <p className="player__role">Admin</p>}
+        </div>
     </div>
 );
 

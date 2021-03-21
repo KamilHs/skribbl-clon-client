@@ -1,0 +1,30 @@
+.players__list {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    min-width: 200px;
+    max-width: 500px;
+    border-right: 1px solid #e2e2e2;
+}
+
+.players__list-item {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.player {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.player__left {
+    text-align: center;
+}
+
+.player__role {
+    font-weight: bold;
+}
+
+.player__self {
+    font-weight: bold;
+}

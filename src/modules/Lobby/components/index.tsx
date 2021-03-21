@@ -2,9 +2,12 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Players from "./Players/Players";
+import Panel from "./Panel";
+
+import "./index.css";
 
 const mapStateToProps = (state: RootState) => ({
-    players: state.lobby.players,
+    ...state.lobby,
 });
 
 const mapDispatch = {};
@@ -15,8 +18,13 @@ type PropsRedux = ConnectedProps<typeof connector>;
 
 type Props = PropsRedux;
 
-const Lobby: React.FC<Props> = ({ players }) => {
-    return <Players players={players} />;
+const Lobby: React.FC<Props> = ({ players, roomId }) => {
+    return (
+        <div className="lobby">
+            <Players players={players} />
+            <Panel roomId={roomId} />
+        </div>
+    );
 };
 
 export default connector(Lobby);

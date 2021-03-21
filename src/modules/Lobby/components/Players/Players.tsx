@@ -1,6 +1,9 @@
 import React from "react";
+
 import { IPlayerData } from "../../../../redux/types";
 import Player from "./Player";
+
+import  "./index.css";
 
 interface IProps {
     players: IPlayerData[] | null;
