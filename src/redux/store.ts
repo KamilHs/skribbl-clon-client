@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
+import { routerMiddleware } from "react-router-redux";
+import { createBrowserHistory } from "history";
 import thunk from "redux-thunk";
 
 import { socketMiddleware } from "../middlewares/socketMiddleware";
@@ -13,7 +15,11 @@ declare global {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const middlewares = [thunk, socketMiddleware("http://localhost:5555")];
+const middlewares = [
+    thunk,
+    socketMiddleware("http://localhost:5555"),
+    routerMiddleware(createBrowserHistory()),
+];
 
 export type RootState = ReturnType<typeof rootReducer>;
 
