@@ -6,6 +6,7 @@ import { homeActions, lobbyActions } from "../redux/actions";
 import { RootState } from "../redux/store";
 import { AllActionTypes, CREATE_ROOM } from "../redux/types";
 import { ICreateRoomResponse, isCreateRoomError } from "../socket/types";
+import { LOBBY_ROUTES } from "../modules/Lobby";
 
 export const socketMiddleware = (url: string) => {
     const socket = socketIOClient(url, { transports: ["websocket"] });
@@ -28,7 +29,9 @@ export const socketMiddleware = (url: string) => {
                             storeApi.dispatch(
                                 lobbyActions.setRoomId(res.roomId)
                             );
-                            storeApi.dispatch(push("/lobby"));
+                            storeApi.dispatch(
+                                push(`${LOBBY_ROUTES.MAIN}/${res.roomId}`)
+                            );
                         }
                     });
                     break;
