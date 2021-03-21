@@ -26,6 +26,7 @@ interface ISetIdFetchStatus {
 
 interface ICreateRoom {
     type: typeof CREATE_ROOM;
+    payload: string;
 }
 
 interface IJoinRoom {
@@ -35,6 +36,8 @@ interface IJoinRoom {
 
 export type SocketActionTypes = ICreateRoom | IJoinRoom;
 export type LobbyActionTypes = ISetIsValidId | ISetIdFetchStatus;
+
+export type AllActionTypes = SocketActionTypes | LobbyActionTypes;
 
 export interface ILobbyState {
     fetchStatus: FetchStatus;

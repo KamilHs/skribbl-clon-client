@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 import { RootState } from "../../../redux/store";
-import { lobbyActions } from "../../../redux/actions";
+import { lobbyActions, socketActions } from "../../../redux/actions";
 
 import "./index.css";
 
@@ -13,6 +13,7 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatch = {
     fetchIsValidId: lobbyActions.fetchIsValidId,
+    createRoom: socketActions.createRoom,
 };
 
 const connector = connect(mapStateToProps, mapDispatch);
@@ -25,7 +26,12 @@ type PathParamsType = {
 
 type PropsTypes = RouteComponentProps<PathParamsType> & PropsRedux;
 
-const Home: React.FC<PropsTypes> = ({ match, isValidId, fetchIsValidId }) => {
+const Home: React.FC<PropsTypes> = ({
+    match,
+    isValidId,
+    fetchIsValidId,
+    createRoom,
+}) => {
     const [nickname, setNickname] = React.useState<string>("");
     const [error, setError] = React.useState<string>("");
     const id = React.useMemo<string | null>(() => match.params?.id || null, [
@@ -46,9 +52,10 @@ const Home: React.FC<PropsTypes> = ({ match, isValidId, fetchIsValidId }) => {
         if (isValidId) {
             // Join game
         } else {
-            // Create game
+            // Create room
+            createRoom(nickname.trim());
         }
-    }, [nickname, isValidId]);
+    }, [nickname, isValidId, createRoom]);
 
     React.useEffect(() => {
         if (!id || !fetchIsValidId) return;
