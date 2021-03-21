@@ -47,17 +47,20 @@ interface IJoinRoom {
 }
 
 export type SocketActionTypes = ICreateRoom | IJoinRoom;
-export type HomeActionTypes =
-    | ISetIsValidId
-    | ISetIdFetchStatus
-    | ISetRoomId
-    | ISetError;
+export type HomeActionTypes = ISetIsValidId | ISetIdFetchStatus | ISetError;
+export type LobbyActionTypes = ISetRoomId;
 
-export type AllActionTypes = SocketActionTypes | HomeActionTypes;
+export type AllActionTypes =
+    | SocketActionTypes
+    | HomeActionTypes
+    | LobbyActionTypes;
 
 export interface IHomeState {
     fetchStatus: FetchStatus;
     isValidId: boolean | null;
-    roomId: string | null;
     error: string | null;
+}
+
+export interface ILobbyState {
+    roomId: string | null;
 }

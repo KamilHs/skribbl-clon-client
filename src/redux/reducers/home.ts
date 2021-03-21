@@ -5,13 +5,11 @@ import {
     SET_ERROR,
     SET_ID_FETCH_STATUS,
     SET_IS_VALID_ID,
-    SET_ROOM_ID,
 } from "../types";
 
 const initialState: IHomeState = {
     isValidId: null,
     fetchStatus: FetchStatus.none,
-    roomId: null,
     error: null,
 };
 
@@ -30,13 +28,6 @@ const reducer = (
                 ...state,
                 fetchStatus: FetchStatus.success,
                 isValidId: action.payload,
-            };
-        case SET_ROOM_ID:
-            return {
-                ...state,
-                fetchStatus: FetchStatus.none,
-                isValidId: null,
-                roomId: action.payload,
             };
         case SET_ERROR:
             return {

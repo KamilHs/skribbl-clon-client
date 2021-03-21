@@ -8,7 +8,6 @@ import {
     SET_ERROR,
     SET_ID_FETCH_STATUS,
     SET_IS_VALID_ID,
-    SET_ROOM_ID,
 } from "../types";
 
 const actions = {
@@ -32,10 +31,6 @@ const actions = {
     setIdFetchStatus: (status: FetchStatus): HomeActionTypes => ({
         type: SET_ID_FETCH_STATUS,
         payload: status,
-    }),
-    setRoomId: (roomId: string | null): HomeActionTypes => ({
-        type: SET_ROOM_ID,
-        payload: roomId,
     }),
     setError: (error: string | null): HomeActionTypes => ({
         type: SET_ERROR,
