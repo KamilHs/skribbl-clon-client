@@ -5,6 +5,7 @@ export const JOIN_ROOM = "JOIN_ROOM";
 export const SET_ROOM_ID = "SET_ROOM_ID";
 export const SET_ERROR = "SET_ERROR";
 export const SET_PLAYERS_DATA = "SET_PLAYERS_DATA";
+export const START_GAME = "START_GAME";
 
 export enum FetchStatus {
     none,
@@ -66,7 +67,12 @@ interface ISetPlayersData {
     payload: IPlayerData[] | null;
 }
 
-export type SocketActionTypes = ICreateRoom | IJoinRoom;
+interface IStartGame {
+    type: typeof START_GAME;
+    payload: string;
+}
+
+export type SocketActionTypes = ICreateRoom | IJoinRoom | IStartGame;
 export type HomeActionTypes = ISetIsValidId | ISetIdFetchStatus | ISetError;
 export type LobbyActionTypes = ISetRoomId | ISetPlayersData;
 

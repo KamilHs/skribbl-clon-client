@@ -1,4 +1,9 @@
-import { CREATE_ROOM, JOIN_ROOM, SocketActionTypes } from "../types";
+import {
+    CREATE_ROOM,
+    JOIN_ROOM,
+    SocketActionTypes,
+    START_GAME,
+} from "../types";
 
 const actions = {
     createRoom: (nickname: string): SocketActionTypes => ({
@@ -11,6 +16,10 @@ const actions = {
             id,
             nickname,
         },
+    }),
+    startGame: (roomId: string): SocketActionTypes => ({
+        type: START_GAME,
+        payload: roomId,
     }),
 };
 

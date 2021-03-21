@@ -9,6 +9,7 @@ import {
     CREATE_ROOM,
     IPlayerData,
     JOIN_ROOM,
+    START_GAME,
 } from "../redux/types";
 import { isHomeError, GET_PLAYERS_DATA, IHomeResponse } from "../socket/types";
 import { LOBBY_ROUTES } from "../modules/Lobby";
@@ -36,6 +37,9 @@ export const socketMiddleware = (url: string) => {
         socket.on(GET_PLAYERS_DATA, (data: IPlayerData[] | null) =>
             storeApi.dispatch(lobbyActions.setPlayerData(data))
         );
+        socket.on(START_GAME, () => {
+            console.log("started");
+        });
 
         return (next) => (action: AllActionTypes) => {
             switch (action.type) {
@@ -50,6 +54,9 @@ export const socketMiddleware = (url: string) => {
                     socket.on(JOIN_ROOM, (res: IHomeResponse) =>
                         handleCreateAndJoinRoom(storeApi, res)
                     );
+                    break;
+                case START_GAME:
+                    socket.emit(START_GAME, { roomId: action.payload });
                     break;
                 default:
                     next(action);

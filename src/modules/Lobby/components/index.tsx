@@ -1,5 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
+
 import { RootState } from "../../../redux/store";
 import Players from "./Players/Players";
 import Panel from "./Panel";
@@ -22,7 +23,7 @@ const Lobby: React.FC<Props> = ({ players, roomId }) => {
     return (
         <div className="lobby">
             <Players players={players} />
-            <Panel roomId={roomId} />
+            <Panel roomId={roomId} players={players} />
         </div>
     );
 };
