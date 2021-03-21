@@ -2,7 +2,7 @@ import { Middleware } from "redux";
 import { push } from "react-router-redux";
 import socketIOClient from "socket.io-client";
 
-import { lobbyActions } from "../redux/actions";
+import { homeActions } from "../redux/actions";
 import { RootState } from "../redux/store";
 import { AllActionTypes, CREATE_ROOM } from "../redux/types";
 import { ICreateRoomResponse, isCreateRoomError } from "../socket/types";
@@ -22,11 +22,11 @@ export const socketMiddleware = (url: string) => {
                     socket.on(CREATE_ROOM, (res: ICreateRoomResponse) => {
                         if (isCreateRoomError(res)) {
                             storeApi.dispatch(
-                                lobbyActions.setError(res.message)
+                                homeActions.setError(res.message)
                             );
                         } else {
                             storeApi.dispatch(
-                                lobbyActions.setRoomId(res.roomId)
+                                homeActions.setRoomId(res.roomId)
                             );
                             storeApi.dispatch(push("/lobby"));
                         }

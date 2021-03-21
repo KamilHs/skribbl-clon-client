@@ -4,7 +4,7 @@ import api from "../../core/api";
 import { RootState } from "../store";
 import {
     FetchStatus,
-    LobbyActionTypes,
+    HomeActionTypes,
     SET_ERROR,
     SET_ID_FETCH_STATUS,
     SET_IS_VALID_ID,
@@ -14,7 +14,7 @@ import {
 const actions = {
     fetchIsValidId: (
         id: string | null
-    ): ThunkAction<void, RootState, unknown, LobbyActionTypes> => async (
+    ): ThunkAction<void, RootState, unknown, HomeActionTypes> => async (
         dispatch
     ) => {
         dispatch(actions.setIdFetchStatus(FetchStatus.loading));
@@ -25,19 +25,19 @@ const actions = {
             dispatch(actions.setIdFetchStatus(FetchStatus.failure));
         }
     },
-    setIsValidId: (isValidId: boolean): LobbyActionTypes => ({
+    setIsValidId: (isValidId: boolean): HomeActionTypes => ({
         type: SET_IS_VALID_ID,
         payload: isValidId,
     }),
-    setIdFetchStatus: (status: FetchStatus): LobbyActionTypes => ({
+    setIdFetchStatus: (status: FetchStatus): HomeActionTypes => ({
         type: SET_ID_FETCH_STATUS,
         payload: status,
     }),
-    setRoomId: (roomId: string | null): LobbyActionTypes => ({
+    setRoomId: (roomId: string | null): HomeActionTypes => ({
         type: SET_ROOM_ID,
         payload: roomId,
     }),
-    setError: (error: string | null): LobbyActionTypes => ({
+    setError: (error: string | null): HomeActionTypes => ({
         type: SET_ERROR,
         payload: error,
     }),

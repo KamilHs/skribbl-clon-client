@@ -3,16 +3,16 @@ import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 import { RootState } from "../../../redux/store";
-import { lobbyActions, socketActions } from "../../../redux/actions";
+import { homeActions, socketActions } from "../../../redux/actions";
 
 import "./index.css";
 
 const mapStateToProps = (state: RootState) => ({
-    isValidId: state.lobby.isValidId,
+    isValidId: state.home.isValidId,
 });
 
 const mapDispatch = {
-    fetchIsValidId: lobbyActions.fetchIsValidId,
+    fetchIsValidId: homeActions.fetchIsValidId,
     createRoom: socketActions.createRoom,
 };
 

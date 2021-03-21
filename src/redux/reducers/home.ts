@@ -1,14 +1,14 @@
 import {
     FetchStatus,
-    ILobbyState,
-    LobbyActionTypes,
+    IHomeState,
+    HomeActionTypes,
     SET_ERROR,
     SET_ID_FETCH_STATUS,
     SET_IS_VALID_ID,
     SET_ROOM_ID,
 } from "../types";
 
-const initialState: ILobbyState = {
+const initialState: IHomeState = {
     isValidId: null,
     fetchStatus: FetchStatus.none,
     roomId: null,
@@ -16,9 +16,9 @@ const initialState: ILobbyState = {
 };
 
 const reducer = (
-    state: ILobbyState = initialState,
-    action: LobbyActionTypes
-): ILobbyState => {
+    state: IHomeState = initialState,
+    action: HomeActionTypes
+): IHomeState => {
     switch (action.type) {
         case SET_ID_FETCH_STATUS:
             return {

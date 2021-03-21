@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
 import GameReducer from "./game";
-import LobbyReducer from "./lobby";
+import homeReducer from "./home";
 
 export default combineReducers({
-    lobby: LobbyReducer,
+    home: homeReducer,
     game: GameReducer,
 });

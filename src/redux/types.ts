@@ -47,15 +47,15 @@ interface IJoinRoom {
 }
 
 export type SocketActionTypes = ICreateRoom | IJoinRoom;
-export type LobbyActionTypes =
+export type HomeActionTypes =
     | ISetIsValidId
     | ISetIdFetchStatus
     | ISetRoomId
     | ISetError;
 
-export type AllActionTypes = SocketActionTypes | LobbyActionTypes;
+export type AllActionTypes = SocketActionTypes | HomeActionTypes;
 
-export interface ILobbyState {
+export interface IHomeState {
     fetchStatus: FetchStatus;
     isValidId: boolean | null;
     roomId: string | null;
