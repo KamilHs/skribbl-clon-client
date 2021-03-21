@@ -1,17 +1,20 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 
 import { HomeRoutes } from "./modules/Home";
 import { LobbyRoutes } from "./modules/Lobby";
-import store from "./redux/store";
+import store, { history } from "./redux/store";
+import { Route } from "react-router-dom";
 
 const App: React.FC = () => (
     <Provider store={store}>
-        <BrowserRouter>
-            <LobbyRoutes />
-            <HomeRoutes />
-        </BrowserRouter>
+        <ConnectedRouter history={history}>
+            <Route>
+                <LobbyRoutes />
+                <HomeRoutes />
+            </Route>
+        </ConnectedRouter>
     </Provider>
 );
 
