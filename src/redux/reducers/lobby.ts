@@ -2,13 +2,17 @@ import {
     FetchStatus,
     ILobbyState,
     LobbyActionTypes,
+    SET_ERROR,
     SET_ID_FETCH_STATUS,
     SET_IS_VALID_ID,
+    SET_ROOM_ID,
 } from "../types";
 
 const initialState: ILobbyState = {
     isValidId: null,
     fetchStatus: FetchStatus.none,
+    roomId: null,
+    error: null,
 };
 
 const reducer = (
@@ -26,6 +30,20 @@ const reducer = (
                 ...state,
                 fetchStatus: FetchStatus.success,
                 isValidId: action.payload,
+            };
+        case SET_ROOM_ID:
+            return {
+                ...state,
+                fetchStatus: FetchStatus.none,
+                isValidId: null,
+                roomId: action.payload,
+            };
+        case SET_ERROR:
+            return {
+                ...state,
+                fetchStatus: FetchStatus.none,
+                isValidId: null,
+                error: action.payload,
             };
         default:
             return state;

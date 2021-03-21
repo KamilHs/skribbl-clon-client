@@ -5,8 +5,10 @@ import { RootState } from "../store";
 import {
     FetchStatus,
     LobbyActionTypes,
+    SET_ERROR,
     SET_ID_FETCH_STATUS,
     SET_IS_VALID_ID,
+    SET_ROOM_ID,
 } from "../types";
 
 const actions = {
@@ -30,6 +32,14 @@ const actions = {
     setIdFetchStatus: (status: FetchStatus): LobbyActionTypes => ({
         type: SET_ID_FETCH_STATUS,
         payload: status,
+    }),
+    setRoomId: (roomId: string | null): LobbyActionTypes => ({
+        type: SET_ROOM_ID,
+        payload: roomId,
+    }),
+    setError: (error: string | null): LobbyActionTypes => ({
+        type: SET_ERROR,
+        payload: error,
     }),
 };
 
