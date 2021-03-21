@@ -21,10 +21,11 @@ type PropsRedux = ConnectedProps<typeof connector>;
 type Props = PropsRedux;
 
 const Game: React.FC<Props> = ({ players }) => {
+    const player = players?.find((player) => player.isMe);
     return (
         <div className="game-container">
             <Players players={players} leaderboard />
-            <Canvas isDrawer={true} />
+            <Canvas isDrawer={player?.isDrawer || false} />
             <Chat />
         </div>
     );

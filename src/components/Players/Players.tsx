@@ -17,9 +17,15 @@ const Players: React.FC<IProps> = ({ players, leaderboard }) => (
             maxWidth: leaderboard ? "300px" : "",
         }}
     >
-        {players?.map((player) => (
-            <Player key={Math.random()} player={player} />
-        ))}
+        {players
+            ?.sort((a, b) => b.score - a.score)
+            .map((player) => (
+                <Player
+                    key={Math.random()}
+                    player={player}
+                    leaderboard={leaderboard}
+                />
+            ))}
     </div>
 );
 
