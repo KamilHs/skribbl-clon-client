@@ -3,14 +3,14 @@ export interface ICreateRoomError {
     message: string;
 }
 
-export interface ICreteRoomSuccess {
+export interface ICreateRoomSuccess {
     roomId: string;
 }
 
-export type ICreateRoomResponse = ICreateRoomError | ICreteRoomSuccess;
+export type ICreateRoomResponse = ICreateRoomError | ICreateRoomSuccess;
 
 export const isCreateRoomError = (
-    data: ICreateRoomError | ICreteRoomSuccess
+    data: ICreateRoomError | ICreateRoomSuccess
 ): data is ICreateRoomError => {
     return (data as ICreateRoomError).error !== void 0;
 };
