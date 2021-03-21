@@ -6,6 +6,8 @@ export const SET_ROOM_ID = "SET_ROOM_ID";
 export const SET_ERROR = "SET_ERROR";
 export const SET_PLAYERS_DATA = "SET_PLAYERS_DATA";
 export const START_GAME = "START_GAME";
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const SET_MESSAGE = "SET_MESSAGE";
 
 export enum FetchStatus {
     none,
@@ -19,10 +21,27 @@ export enum PlayerType {
     member,
 }
 
+enum MessageType {
+    join,
+    leave,
+    guessed,
+    guessing,
+    guess,
+}
+
+export interface IMessage {
+    id: string;
+    type: MessageType;
+    authorName: string;
+    content: string;
+}
+
 export interface IPlayerData {
     nickname: string;
     role: PlayerType;
     isMe: boolean;
+    score: number;
+    isDrawer: boolean;
 }
 
 export interface IFetchIsValidIdResult {
@@ -72,14 +91,30 @@ interface IStartGame {
     payload: string;
 }
 
-export type SocketActionTypes = ICreateRoom | IJoinRoom | IStartGame;
+interface ISendMessage {
+    type: typeof SEND_MESSAGE;
+    payload: string;
+}
+
+interface ISetMessage {
+    type: typeof SET_MESSAGE;
+    payload: IMessage;
+}
+
+export type SocketActionTypes =
+    | ICreateRoom
+    | IJoinRoom
+    | IStartGame
+    | ISendMessage;
 export type HomeActionTypes = ISetIsValidId | ISetIdFetchStatus | ISetError;
 export type LobbyActionTypes = ISetRoomId | ISetPlayersData;
+export type GameActionTypes = ISetMessage;
 
 export type AllActionTypes =
     | SocketActionTypes
     | HomeActionTypes
-    | LobbyActionTypes;
+    | LobbyActionTypes
+    | GameActionTypes;
 
 export interface IHomeState {
     fetchStatus: FetchStatus;
@@ -90,4 +125,8 @@ export interface IHomeState {
 export interface ILobbyState {
     roomId: string | null;
     players: IPlayerData[] | null;
+}
+
+export interface IGameState {
+    messages: IMessage[];
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
 import { RootState } from "../../../redux/store";
-import Players from "./Players/Players";
+import Players from "../../../components/Players/Players";
 import Panel from "./Panel";
 
 import "./index.css";

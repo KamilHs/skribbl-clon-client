@@ -1,6 +1,7 @@
 import {
     CREATE_ROOM,
     JOIN_ROOM,
+    SEND_MESSAGE,
     SocketActionTypes,
     START_GAME,
 } from "../types";
@@ -20,6 +21,10 @@ const actions = {
     startGame: (roomId: string): SocketActionTypes => ({
         type: START_GAME,
         payload: roomId,
+    }),
+    sendMessage: (content: string): SocketActionTypes => ({
+        type: SEND_MESSAGE,
+        payload: content,
     }),
 };
 

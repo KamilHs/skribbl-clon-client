@@ -1,9 +1,33 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import Players from "../../../components/Players/Players";
+import { RootState } from "../../../redux/store";
 
 import Canvas from "./Canvas";
+import Chat from "./Chat";
 
-const Game: React.FC = () => {
-    return <Canvas isDrawer={true} />;
+import "./index.css";
+
+const mapStateToProps = (state: RootState) => ({
+    ...state.lobby,
+});
+
+const mapDispatch = {};
+
+const connector = connect(mapStateToProps, mapDispatch);
+
+type PropsRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsRedux;
+
+const Game: React.FC<Props> = ({ players }) => {
+    return (
+        <div className="game-container">
+            <Players players={players} leaderboard />
+            <Canvas isDrawer={true} />
+            <Chat />
+        </div>
+    );
 };
 
-export default Game;
+export default connector(Game);

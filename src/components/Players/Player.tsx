@@ -1,5 +1,5 @@
 import React from "react";
-import { IPlayerData, PlayerType } from "../../../../redux/types";
+import { IPlayerData, PlayerType } from "../../redux/types";
 
 interface IProps {
     player: IPlayerData;

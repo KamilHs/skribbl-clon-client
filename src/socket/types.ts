@@ -1,4 +1,5 @@
 export const GET_PLAYERS_DATA = "GET_PLAYERS_DATA";
+export const GET_MESSAGE = "GET_MESSAGE";
 
 export interface IHomeError {
     error: true;

@@ -1,5 +1,8 @@
 import React from "react";
+
 import { useCanvas } from "../../../../hooks/useCanvas";
+
+import "./index.css";
 
 interface IProps {
     isDrawer: boolean;

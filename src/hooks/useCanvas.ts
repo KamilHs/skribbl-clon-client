@@ -35,8 +35,9 @@ export const useCanvas = (isDrawer: boolean, canvasData: CanvasData) => {
                 ctx.fillStyle = canvasData.color;
                 ctx.strokeStyle = canvasData.color;
                 ctx.lineWidth = canvasData.width * 2;
-                const x = e.clientX;
-                const y = e.clientY;
+
+                const x = e.offsetX;
+                const y = e.offsetY;
                 if (previousPoint.current) {
                     ctx.beginPath();
                     ctx.moveTo(
@@ -58,8 +59,11 @@ export const useCanvas = (isDrawer: boolean, canvasData: CanvasData) => {
     React.useEffect(() => {
         if (!canvasRef.current || !isDrawer) return;
         const canvas = canvasRef.current;
-        canvas.width = document.documentElement.clientWidth;
-        canvas.height = document.documentElement.clientHeight;
+        const parent = canvas.parentElement;
+        if (parent) {
+            canvas.width = parent?.clientWidth;
+            canvas.height = parent?.clientHeight;
+        }
 
         canvas.addEventListener("mousedown", handleMouseDown);
         canvas.addEventListener("mouseup", handleMouseUp);
