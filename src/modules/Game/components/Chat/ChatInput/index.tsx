@@ -12,7 +12,7 @@ const ChatInput: React.FC = () => {
             const trimmed = message.trim();
             if (trimmed.length === 0) return;
             dispatch(socketActions.sendMessage(trimmed));
-            setMessage("");
+            setMessage("")
         },
         [message, dispatch]
     );

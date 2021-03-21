@@ -1,0 +1,10 @@
+.messages__list {
+    box-sizing: border-box;
+    list-style: none;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.message__list-item {
+    margin-bottom: 10px;
+}
