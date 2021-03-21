@@ -9,6 +9,7 @@ import "./index.css";
 
 const mapStateToProps = (state: RootState) => ({
     isValidId: state.home.isValidId,
+    createError: state.home.error,
 });
 
 const mapDispatch = {
@@ -29,6 +30,7 @@ type PropsTypes = RouteComponentProps<PathParamsType> & PropsRedux;
 const Home: React.FC<PropsTypes> = ({
     match,
     isValidId,
+    createError,
     fetchIsValidId,
     createRoom,
 }) => {
@@ -66,10 +68,10 @@ const Home: React.FC<PropsTypes> = ({
         <div className="home__container">
             <div className="home__content">
                 <form action="#" className="home__form">
-                    {error !== "" && (
+                    {(error !== "" || createError !== null) && (
                         <div className="home__form-error">
                             <span className="home__form-error-text">
-                                {error}
+                                {createError || error}
                             </span>
                         </div>
                     )}
