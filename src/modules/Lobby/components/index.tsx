@@ -19,4 +19,4 @@ const Lobby: React.FC<Props> = ({ players }) => {
     return <Players players={players} />;
 };
 
-export default Lobby;
+export default connector(Lobby);

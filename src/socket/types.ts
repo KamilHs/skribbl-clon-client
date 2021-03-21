@@ -3,19 +3,13 @@ export interface IHomeError {
     error: true;
     message: string;
 }
-
-export interface ICreateRoomSuccess {
+export interface IHomeSuccess {
     roomId: string;
 }
-export interface IJoinRoomSuccess {
-    roomId: string;
-}
-
-export type ICreateRoomResponse = IHomeError | ICreateRoomSuccess;
-export type IJoinRoomResponse = IHomeError | IJoinRoomSuccess;
+export type IHomeResponse = IHomeError | IHomeSuccess;
 
 export const isHomeError = (
-    data: IHomeError | ICreateRoomSuccess
+    data: IHomeError | IHomeSuccess
 ): data is IHomeError => {
     return (data as IHomeError).error !== void 0;
 };

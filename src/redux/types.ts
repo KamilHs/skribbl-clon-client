@@ -63,7 +63,7 @@ interface IJoinRoom {
 
 interface ISetPlayersData {
     type: typeof SET_PLAYERS_DATA;
-    payload: IPlayerData[];
+    payload: IPlayerData[] | null;
 }
 
 export type SocketActionTypes = ICreateRoom | IJoinRoom;
