@@ -49,18 +49,22 @@ const Home: React.FC<PropsTypes> = ({
         []
     );
 
-    const handleSubmit = React.useCallback(() => {
-        if (nickname.trim().length === 0) {
-            return setError("Nickname is required");
-        }
-        if (isValidId) {
-            // Join game
-            joinRoom(id || "", nickname.trim());
-        } else {
-            // Create room
-            createRoom(nickname.trim());
-        }
-    }, [nickname, isValidId, id, createRoom, joinRoom]);
+    const handleSubmit = React.useCallback(
+        (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            if (nickname.trim().length === 0) {
+                return setError("Nickname is required");
+            }
+            if (isValidId) {
+                // Join game
+                joinRoom(id || "", nickname.trim());
+            } else {
+                // Create room
+                createRoom(nickname.trim());
+            }
+        },
+        [nickname, isValidId, id, createRoom, joinRoom]
+    );
 
     React.useEffect(() => {
         if (!id || !fetchIsValidId) return;
@@ -70,7 +74,7 @@ const Home: React.FC<PropsTypes> = ({
     return (
         <div className="home__container">
             <div className="home__content">
-                <form action="#" className="home__form">
+                <form action="#" className="home__form" onSubmit={handleSubmit}>
                     {(error !== "" || createError !== null) && (
                         <div className="home__form-error">
                             <span className="home__form-error-text">
@@ -93,17 +97,15 @@ const Home: React.FC<PropsTypes> = ({
                     <div className="home__form-button-container">
                         {isValidId ? (
                             <button
-                                type="button"
+                                type="submit"
                                 className="home__form-join-button"
-                                onClick={handleSubmit}
                             >
                                 Join Game
                             </button>
                         ) : (
                             <button
-                                type="button"
+                                type="submit"
                                 className="home__form-create-button"
-                                onClick={handleSubmit}
                             >
                                 Create Game
                             </button>
